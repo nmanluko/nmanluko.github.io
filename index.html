@@ -5,34 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nandasaikishore MK | Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
-  <header class="hero">
-    <h1>Hello, I'm <span>Nanda Sai Kishore Manlu Kose</span></h1>
-    <p>MS in IT, B.tech CSE</p>
+  <header class="hero" data-aos="fade-down">
+    <h1>Hello, I'm <span>Nandasaikishore MK</span></h1>
+    <p>A passionate Developer & Creator 🚀</p>
   </header>
 
-  <section class="about">
+  <section class="about" data-aos="fade-up">
     <h2>About Me</h2>
     <p>I’m a tech enthusiast who loves building projects, learning new things, and solving real-world problems.</p>
   </section>
 
-  <section class="projects">
+  <section class="projects" data-aos="zoom-in">
     <h2>Projects</h2>
     <ul>
-      <li><strong>Project One:</strong> Description of your project one.</li>
-      <li><strong>Project Two:</strong> Description of your project two.</li>
+      <li data-aos="fade-left"><strong>Project One:</strong> Description of your project one.</li>
+      <li data-aos="fade-right"><strong>Project Two:</strong> Description of your project two.</li>
     </ul>
   </section>
 
-  <section class="contact">
+  <section class="contact" data-aos="flip-up">
     <h2>Contact Me</h2>
     <p>Email: nandasaikishore@example.com</p>
     <p>LinkedIn: <a href="#">Your LinkedIn</a></p>
   </section>
 
-  <footer>
+  <footer data-aos="fade-in">
     <p>© 2025 Nandasaikishore MK</p>
   </footer>
+
+  <!-- Add AOS Script before </body> -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
+
 </html>
