@@ -3,122 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nandasaikishore MK | Portfolio</title>
+  <title>Nandasaikishore MK | Planetary Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
 </head>
 <body>
-  <canvas id="bookCanvas"></canvas>
+  <div class="galaxy-bg"></div>
 
-  <header class="hero" data-aos="fade-down">
-    <h1><span>Nanda Sai Kishore Manlu Kose</span></h1>
-    <p>Passionate Developer and Analyst</p>
+  <header class="hero">
+    <h1>Nanda Sai Kishore MK</h1>
+    <p>Exploring the tech universe 🚀</p>
   </header>
 
-  <section class="about" data-aos="fade-up">
-    <h2>About Me</h2>
-    <p>I’m a tech enthusiast who loves building projects, learning new things, and solving real-world problems.</p>
-  </section>
-
-  <section class="projects" data-aos="zoom-in">
-    <h2>Projects</h2>
-    <ul>
-      <li data-aos="fade-left"><strong>Project One:</strong> Description of your project one.</li>
-      <li data-aos="fade-right"><strong>Project Two:</strong> Description of your project two.</li>
-    </ul>
-  </section>
-
-  <section class="contact" data-aos="fade-left">
-    <div class="book-flip">
-      <div class="book-page">
-        <h3>📬 Contact Me</h3>
-        <p>Email: nandasaikishore@example.com</p>
-        <p>LinkedIn: <a href="#">linkedin.com/in/you</a></p>
-      </div>
+  <main class="solar-system">
+    <div class="orbit">
+      <div class="planet experience" onclick="scrollToSection('experience')">Experience</div>
+      <div class="planet projects" onclick="scrollToSection('projects')">Projects</div>
+      <div class="planet certifications" onclick="scrollToSection('certifications')">Certifications</div>
+      <div class="planet contact" onclick="scrollToSection('contact')">Contact</div>
     </div>
+  </main>
+
+  <!-- SECTION CONTENTS -->
+  <section id="experience" class="section">
+    <h2>👨‍💻 Experience</h2>
+    <p>• Software Intern – XYZ Corp</p>
+    <p>• Web Dev – Freelance & Projects</p>
   </section>
 
-  <section class="experience" data-aos="fade-right">
-    <div class="book-flip">
-      <div class="book-page">
-        <h3>📘 Experience</h3>
-        <p><strong>Software Intern</strong><br> XYZ Corp – Summer 2024</p>
-        <p><strong>Web Developer</strong><br> Personal Projects & Freelance</p>
-      </div>
-    </div>
+  <section id="projects" class="section">
+    <h2>🚀 Projects</h2>
+    <p>• Portfolio Website, Weather App, etc.</p>
   </section>
 
-  <footer data-aos="fade-in">
-    <p>© 2025 Nandasaikishore MK</p>
-  </footer>
+  <section id="certifications" class="section">
+    <h2>📜 Certifications</h2>
+    <p>• Google Cloud, Coursera, Udemy Courses</p>
+  </section>
 
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <section id="contact" class="section">
+    <h2>📬 Contact</h2>
+    <p>Email: nandasaikishore@example.com</p>
+    <p>LinkedIn: <a href="#">linkedin.com/in/you</a></p>
+  </section>
+
   <script>
-    AOS.init();
-  </script>
-
-  <!-- Book Canvas Script -->
-  <script>
-    const canvas = document.getElementById('bookCanvas');
-    const ctx = canvas.getContext('2d');
-    let books = [];
-
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-
-    const bookImg = new Image();
-    bookImg.src = 'https://raw.githubusercontent.com/nmanluko/nmanluko.github.io/main/image_1.png';
-
-    function createBooks(num) {
-      for (let i = 0; i < num; i++) {
-        books.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: 30 + Math.random() * 20,
-          vx: 0,
-          vy: 0
-        });
-      }
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
-    createBooks(25);
-
-    function drawBooks() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let book of books) {
-        ctx.drawImage(bookImg, book.x, book.y, book.size, book.size);
-        book.x += book.vx;
-        book.y += book.vy;
-        book.vx *= 0.9;
-        book.vy *= 0.9;
-        if (Math.abs(book.vx) < 0.1) book.vx = 0;
-        if (Math.abs(book.vy) < 0.1) book.vy = 0;
-      }
-      requestAnimationFrame(drawBooks);
-    }
-
-    bookImg.onload = () => drawBooks();
-
-    canvas.addEventListener('mousemove', (e) => {
-      for (let book of books) {
-        let dx = e.clientX - book.x;
-        let dy = e.clientY - book.y;
-        let dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 80) {
-          const angle = Math.atan2(dy, dx);
-          const force = 4;
-          book.vx = -Math.cos(angle) * force;
-          book.vy = -Math.sin(angle) * force;
-        }
-      }
-    });
   </script>
 </body>
 </html>
