@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 <body>
   <canvas id="bookCanvas"></canvas>
@@ -28,102 +29,96 @@
       <li data-aos="fade-right"><strong>Project Two:</strong> Description of your project two.</li>
     </ul>
   </section>
-<section class="contact" data-aos="fade-left">
-  <div class="book-flip">
-    <div class="book-page">
-      <h3>📬 Contact Me</h3>
-      <p>Email: nandasaikishore@example.com</p>
-      <p>LinkedIn: <a href="#">linkedin.com/in/you</a></p>
-    </div>
-  </div>
-</section>
 
-<section class="experience" data-aos="fade-right">
-  <div class="book-flip">
-    <div class="book-page">
-      <h3>📘 Experience</h3>
-      <p><strong>Software Intern</strong><br> XYZ Corp – Summer 2024</p>
-      <p><strong>Web Developer</strong><br> Personal Projects & Freelance</p>
+  <section class="contact" data-aos="fade-left">
+    <div class="book-flip">
+      <div class="book-page">
+        <h3>📬 Contact Me</h3>
+        <p>Email: nandasaikishore@example.com</p>
+        <p>LinkedIn: <a href="#">linkedin.com/in/you</a></p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  <section class="contact" data-aos="flip-up">
-    <h2>Contact Me</h2>
-    <p>Email: nandasaikishore@example.com</p>
-    <p>LinkedIn: <a href="#">Your LinkedIn</a></p>
+  <section class="experience" data-aos="fade-right">
+    <div class="book-flip">
+      <div class="book-page">
+        <h3>📘 Experience</h3>
+        <p><strong>Software Intern</strong><br> XYZ Corp – Summer 2024</p>
+        <p><strong>Web Developer</strong><br> Personal Projects & Freelance</p>
+      </div>
+    </div>
   </section>
 
   <footer data-aos="fade-in">
     <p>© 2025 Nandasaikishore MK</p>
   </footer>
 
-  <!-- Add AOS Script before </body> -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>
+
+  <!-- Book Canvas Script -->
   <script>
-const canvas = document.getElementById('bookCanvas');
-const ctx = canvas.getContext('2d');
-let books = [];
+    const canvas = document.getElementById('bookCanvas');
+    const ctx = canvas.getContext('2d');
+    let books = [];
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
-window.addEventListener('resize', () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
-
-const bookImg = new Image();
-bookImg.src = './image_1.png'; // replace with a transparent book PNG
-
-function createBooks(num) {
-  for (let i = 0; i < num; i++) {
-    books.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.5,
-      vy: (Math.random() - 0.5) * 0.5,
-      size: 25 + Math.random() * 25
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     });
-  }
-}
-createBooks(30);
 
-function drawBooks() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  for (let book of books) {
-    ctx.drawImage(bookImg, book.x, book.y, book.size, book.size);
-    book.x += book.vx;
-    book.y += book.vy;
+    const bookImg = new Image();
+    bookImg.src = 'https://raw.githubusercontent.com/nmanluko/nmanluko.github.io/main/image_1.png';
 
-    // bounce off edges
-    if (book.x <= 0 || book.x + book.size >= canvas.width) book.vx *= -1;
-    if (book.y <= 0 || book.y + book.size >= canvas.height) book.vy *= -1;
-  }
-  requestAnimationFrame(drawBooks);
-}
-
-bookImg.onload = () => {
-  drawBooks();
-};
-
-// Optional: Mouse interaction
-canvas.addEventListener('mousemove', (e) => {
-  for (let book of books) {
-    let dx = e.clientX - book.x;
-    let dy = e.clientY - book.y;
-    let dist = Math.sqrt(dx*dx + dy*dy);
-    if (dist < 100) {
-      book.vx = (Math.random() - 0.5) * 2;
-      book.vy = (Math.random() - 0.5) * 2;
+    function createBooks(num) {
+      for (let i = 0; i < num; i++) {
+        books.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          size: 30 + Math.random() * 20,
+          vx: 0,
+          vy: 0
+        });
+      }
     }
-  }
-});
-</script>
+    createBooks(25);
 
+    function drawBooks() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let book of books) {
+        ctx.drawImage(bookImg, book.x, book.y, book.size, book.size);
+        book.x += book.vx;
+        book.y += book.vy;
+        book.vx *= 0.9;
+        book.vy *= 0.9;
+        if (Math.abs(book.vx) < 0.1) book.vx = 0;
+        if (Math.abs(book.vy) < 0.1) book.vy = 0;
+      }
+      requestAnimationFrame(drawBooks);
+    }
+
+    bookImg.onload = () => drawBooks();
+
+    canvas.addEventListener('mousemove', (e) => {
+      for (let book of books) {
+        let dx = e.clientX - book.x;
+        let dy = e.clientY - book.y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 80) {
+          const angle = Math.atan2(dy, dx);
+          const force = 4;
+          book.vx = -Math.cos(angle) * force;
+          book.vy = -Math.sin(angle) * force;
+        }
+      }
+    });
+  </script>
 </body>
-
 </html>
