@@ -6,6 +6,25 @@
   <title>Nandasaikishore MK | Planetary Portfolio</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Additional CSS for real planet shapes and orbits */
+    .planet img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+    .orbit-line {
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border: 1px dashed #00e0ff;
+      border-radius: 50%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+  </style>
 </head>
 <body>
   <div class="galaxy-bg"></div>
@@ -13,41 +32,56 @@
   <header class="hero">
     <h1>NANDA SAI KISHORE MANLU KOSE</h1>
     <p>Experienced Engineer & Analyst</p>
+    <section id="about" class="section" data-aos="fade-up">
+      <h2>🪐 About Me</h2>
+      <p>I am a passionate engineer with a background in software development, analytics, and project coordination. I enjoy building innovative web apps and exploring emerging tech trends.</p>
+    </section>
   </header>
 
   <main class="solar-system">
+    <div class="orbit-line"></div>
     <div class="orbit">
-      <div class="planet experience" onclick="scrollToSection('experience')"><span>Experience</span></div>
-      <div class="planet projects" onclick="scrollToSection('projects')"><span>Projects</span></div>
-      <div class="planet certifications" onclick="scrollToSection('certifications')"><span>Certifications</span></div>
-      <div class="planet contact" onclick="scrollToSection('contact')"><span>Contact</span></div>
+      <div class="planet experience" onclick="scrollToSection('experience')">
+        <img src="mars.png" alt="Mars"><span style="display:none">Experience</span>
+      </div>
+      <div class="planet projects" onclick="scrollToSection('projects')">
+        <img src="saturn.png" alt="Saturn"><span style="display:none">Projects</span>
+      </div>
+      <div class="planet certifications" onclick="scrollToSection('certifications')">
+        <img src="jupiter.png" alt="Jupiter"><span style="display:none">Certifications</span>
+      </div>
+      <div class="planet contact" onclick="scrollToSection('contact')">
+        <img src="venus.png" alt="Venus"><span style="display:none">Contact</span>
+      </div>
     </div>
   </main>
 
   <!-- SECTION CONTENTS -->
-  <section id="experience" class="section">
+  <section id="experience" class="section" data-aos="fade-up">
     <h2>👨‍💻 Experience</h2>
     <p>• Software Intern – XYZ Corp</p>
     <p>• Web Dev – Freelance & Projects</p>
   </section>
 
-  <section id="projects" class="section">
+  <section id="projects" class="section" data-aos="fade-up">
     <h2>🚀 Projects</h2>
     <p>• Portfolio Website, Weather App, etc.</p>
   </section>
 
-  <section id="certifications" class="section">
+  <section id="certifications" class="section" data-aos="fade-up">
     <h2>📜 Certifications</h2>
     <p>• Google Cloud, Coursera, Udemy Courses</p>
   </section>
 
-  <section id="contact" class="section">
+  <section id="contact" class="section" data-aos="fade-up">
     <h2>📬 Contact</h2>
     <p>Email: nandasaikishore@example.com</p>
     <p>LinkedIn: <a href="#">linkedin.com/in/you</a></p>
   </section>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    AOS.init();
     function scrollToSection(id) {
       document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
     }
