@@ -1,76 +1,411 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nandasaikishore Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nanda Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { height: 100%; margin: 0; }
+    #vanta-bg { position: fixed; inset: 0; z-index: -1; }
+  </style>
 </head>
 <body>
-  <div class="galaxy-bg"></div>
+  <!-- Vanta background layer -->
+  <div id="vanta-bg"></div>
 
-  <header class="hero">
-    <h1>NANDA SAI KISHORE MANLU KOSE</h1>
-    <p>Experienced/Enthusiastic Engineer & Analyst</p>
-    <section id="about" class="section" data-aos="fade-up">
-      <h2>🪐 About Me</h2>
-      <p>I am a passionate engineer with a background in software development, analytics, and project coordination. I enjoy building innovative web apps and exploring emerging tech trends.</p>
-    </section>
-  </header>
+  <!-- Theme toggle (fixed) -->
+  <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme" title="Toggle light/dark">
+    <span class="icon">🌙</span>
+  </button>
 
-  <main class="solar-system">
-    <div class="orbit-wrapper">
-      <div class="orbit">
-        <div class="planet" style="top: 0%; left: 50%;" onclick="scrollToSection('experience')">
-          <div class="circle"></div>
-          <div class="label">Experience</div>
+  <!-- Left glassy side menu -->
+  <nav class="side-nav" aria-label="Section navigation">
+    <a href="#home"       data-section="home"       class="nav-link active">Home</a>
+    <a href="#education"  data-section="education"  class="nav-link">Education</a>
+    <a href="#experience" data-section="experience" class="nav-link">Experience</a>
+    <a href="#projects"   data-section="projects"   class="nav-link">Projects</a>
+    <a href="#skills"     data-section="skills"     class="nav-link">Skills</a>
+  </nav>
+
+  <!-- Right scroll progress bar -->
+  <aside class="progress-rail" aria-hidden="true">
+    <div class="progress-fill" id="progressFill"></div>
+    <div class="progress-pct"  id="progressPct">0%</div>
+  </aside>
+
+  <main>
+    <!-- HOME / HERO -->
+    <section id="home" class="section hero">
+      <h1 id="line1"></h1>
+      <p id="line2"></p>
+
+      <div class="hero-grid">
+        <!-- Avatar + socials -->
+        <div class="hero-left">
+          <div class="avatar"><img src="display_photo_1.jpg" alt="Nanda profile photo" /></div>
+
+          <div class="socials">
+            <a href="https://www.linkedin.com/in/your-link" target="_blank" aria-label="LinkedIn" class="social-btn">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V23h-4V8zM8 8h3.8v2.05h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.77 2.65 4.77 6.1V23h-4v-6.7c0-1.6-.03-3.67-2.24-3.67-2.24 0-2.58 1.75-2.58 3.56V23H8V8z"/></svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/your-handle" target="_blank" aria-label="GitHub" class="social-btn">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 .5a12 12 0 0 0-3.79 23.4c.6.11.82-.26.82-.58v-2.2c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.35-1.77-1.35-1.77-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.26 1.86 1.26 1.08 1.85 2.82 1.32 3.51 1.01.11-.8.42-1.32.76-1.62-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.17 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.3-1.55 3.3-1.23 3.3-1.23.66 1.65.24 2.87.12 3.17.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.62-5.47 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .5z"/></svg>
+              <span>GitHub</span>
+            </a>
+            <a href="resume.pdf" target="_blank" aria-label="Resume" class="social-btn">
+              <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zm0 2.5L18.5 9H14zM8 13h8v2H8zm0 4h8v2H8zm0-8h4v2H8z"/></svg>
+              <span>Resume</span>
+            </a>
+          </div>
         </div>
-        <div class="planet" style="top: 50%; right: 0%; transform: translate(50%, -50%);" onclick="scrollToSection('projects')">
-          <div class="circle"></div>
-          <div class="label">Projects</div>
-        </div>
-        <div class="planet" style="bottom: 0%; left: 50%; transform: translate(-50%, 50%);" onclick="scrollToSection('certifications')">
-          <div class="circle"></div>
-          <div class="label">Certifications</div>
-        </div>
-        <div class="planet" style="top: 50%; left: 0%; transform: translate(-50%, -50%);" onclick="scrollToSection('contact')">
-          <div class="circle"></div>
-          <div class="label">Contact</div>
+
+        <!-- About + Certs (aligned start) -->
+        <div class="hero-right">
+          <section id="aboutWrap" class="about-card hidden" aria-label="About Nanda">
+            <h3>About</h3>
+            <p>
+              Cloud-native engineer skilled in building scalable systems and AI-powered tools.
+              I love shipping fast, reliable features and making data useful.
+            </p>
+            <ul>
+              <li>2+ years: APIs, ETL, microservices — <strong>99.9% uptime</strong></li>
+              <li>LLMs / LangChain / FAISS — <strong>cut QA by 70%</strong></li>
+              <li>AWS & Azure — from real-time data pipelines to Kubernetes</li>
+            </ul>
+          </section>
+
+          <section id="certs" class="certs-card hidden" aria-label="Certifications">
+            <h3>Certifications</h3>
+            <div class="certs-grid">
+              <img src="cert1.png" alt="Certification 1 badge">
+              <img src="cert2.png" alt="Certification 2 badge">
+              <img src="cert3.png" alt="Certification 3 badge">
+            </div>
+          </section>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- EDUCATION (vertical roadmap in glass) -->
+    <section id="education" class="section">
+      <div class="edu-glass" id="eduGlass">
+        <header class="edu-header">
+          <h2 class="edu-title">Education – Map</h2>
+          <div class="edu-sep" aria-hidden="true"></div>
+        </header>
+
+        <div class="edu-map">
+          <div class="edu-line" aria-hidden="true"></div>
+
+          <!-- Item 1 RIGHT -> reveal DOWN -->
+          <article class="edu-item right drop-down">
+            <span class="edu-year">2016</span>
+            <span class="edu-dot" aria-hidden="true"></span>
+            <div class="side side-right">
+              <div class="edu-card">
+                <div class="edu-logo"><img src="edu1.png" alt="School logo"></div>
+                <div class="edu-meta">
+                  <h3>Sample High School</h3>
+                  <p>Science Stream</p>
+                </div>
+              </div>
+              <div class="edu-reveal reveal-down">
+                <ul>
+                  <li>Olympiad finalist • Math/CS clubs</li>
+                  <li>Programming foundations (C/C++)</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 2 LEFT -> reveal DOWN -->
+          <article class="edu-item left drop-down">
+            <span class="edu-year">2018–2022</span>
+            <span class="edu-dot" aria-hidden="true"></span>
+            <div class="side side-left">
+              <div class="edu-card large">
+                <div class="edu-logo"><img src="edu2.png" alt="IIIT Chennai logo"></div>
+                <div class="edu-meta">
+                  <h3>Indian Institute of Information Technology, Chennai</h3>
+                  <p>B.Tech — Computer Science</p>
+                </div>
+              </div>
+              <div class="edu-reveal reveal-down">
+                <ul>
+                  <li>Algorithms, DBMS, OS • 8+ core CS projects</li>
+                  <li>Innovation Club lead • Hackathons</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+
+          <!-- Item 3 RIGHT -> reveal UP -->
+          <article class="edu-item right drop-up">
+            <span class="edu-year">2024–2025</span>
+            <span class="edu-dot" aria-hidden="true"></span>
+            <div class="side side-right">
+              <div class="edu-reveal reveal-up">
+                <ul>
+                  <li>Cloud, Data, AI • LangChain + K8s</li>
+                  <li>Real-time ETL on AWS/Azure • 99.9% uptime</li>
+                </ul>
+              </div>
+              <div class="edu-card">
+                <div class="edu-logo"><img src="edu3.png" alt="ASU logo"></div>
+                <div class="edu-meta">
+                  <h3>Arizona State University</h3>
+                  <p>M.S. — Information Technology (Dec 2025)</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE (horizontal walkthrough) -->
+    <section id="experience" class="section">
+      <div class="exp-glass">
+        <header class="exp-header">
+          <h2 class="exp-title">Let’s walk through the experience</h2>
+          <div class="exp-sep" aria-hidden="true"></div>
+        </header>
+
+        <div class="exp-track" id="expTrack" aria-label="Experience timeline">
+          <div class="exp-line" aria-hidden="true"></div>
+
+          <!-- Exp 1 -->
+          <article class="exp-item">
+            <span class="exp-dot" aria-hidden="true"></span>
+            <span class="exp-year">2022–2024</span>
+            <span class="exp-company">Capgemini</span>
+
+            <div class="exp-top">
+              <div class="exp-logo"><img src="exp1.png" alt="Capgemini logo"></div>
+              <div class="exp-meta">
+                <h3>Capgemini</h3>
+                <p>Senior Analyst • Data & Cloud</p>
+              </div>
+            </div>
+            <div class="exp-reveal">
+              <ul>
+                <li>Built Azure Data Factory pipelines & Databricks jobs</li>
+                <li>Delivered BI dashboards; optimized ETL costs</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Exp 2 -->
+          <article class="exp-item">
+            <span class="exp-dot" aria-hidden="true"></span>
+            <span class="exp-year">2021</span>
+            <span class="exp-company">Way2Grow</span>
+
+            <div class="exp-top">
+              <div class="exp-logo"><img src="exp2.png" alt="Way2Grow logo"></div>
+              <div class="exp-meta">
+                <h3>Way2Grow</h3>
+                <p>Software Engineer Intern</p>
+              </div>
+            </div>
+            <div class="exp-reveal">
+              <ul>
+                <li>IoT data ingestion to AWS; real-time dashboards</li>
+                <li>Designed REST APIs & responsive UI</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Exp 3 -->
+          <article class="exp-item">
+            <span class="exp-dot" aria-hidden="true"></span>
+            <span class="exp-year">2024–2025</span>
+            <span class="exp-company">Smart Test-Agent Project</span>
+
+            <div class="exp-top">
+              <div class="exp-logo"><img src="exp3.png" alt="Research Lab logo"></div>
+              <div class="exp-meta">
+                <h3>Smart Test-Agent Project</h3>
+                <p>Research / Open-source</p>
+              </div>
+            </div>
+            <div class="exp-reveal">
+              <ul>
+                <li>LLM + LangChain + FAISS for auto-QA</li>
+                <li>Cut manual QA by 70%; toolchain docs & demos</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <p class="exp-hint">Move your mouse → to explore</p>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2>Projects</h2>
+        <ul>
+          <li>Smart Test-Agent Generator — LangChain, LLMs, FAISS</li>
+          <li>Microservice Cloud Pipeline — Go, Docker, AKS</li>
+          <li>GraphQL E-Commerce Backend — Node, Redis, PostgreSQL</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2>Skills</h2>
+        <p>Python, JS/TS, SQL, Go • React, Node, FastAPI • AWS, Azure • Docker, K8s, Terraform</p>
+      </div>
+    </section>
   </main>
 
-  <section id="experience" class="section" data-aos="fade-up">
-    <h2>👨‍💻 Experience</h2>
-    <p>• Software Intern – XYZ Corp</p>
-    <p>• Web Dev – Freelance & Projects</p>
-  </section>
+  <!-- THREE + Vanta -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.birds.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.clouds.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.waves.min.js"></script>
 
-  <section id="projects" class="section" data-aos="fade-up">
-    <h2>🚀 Projects</h2>
-    <p>• Portfolio Website, Weather App, etc.</p>
-  </section>
-
-  <section id="certifications" class="section" data-aos="fade-up">
-    <h2>📜 Certifications</h2>
-    <p>• Google Cloud, Coursera, Udemy Courses</p>
-  </section>
-
-  <section id="contact" class="section" data-aos="fade-up">
-    <h2>📬 Contact</h2>
-    <p>Email: mknandasaikishore@gmail.com</p>
-    <p>LinkedIn: <a href="#">linkedin.com/in/you</a></p>
-  </section>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    AOS.init();
-    function scrollToSection(id) {
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    /* ------------ THEMES (persisted) ------------ */
+    const THEMES = {
+      dark:  { vantaBg: 0x0e1b25, netColor: 0x9aa7b4,wavecolor:0x131318, birds1: 0xff4d9d },
+      light: { vantaBg: 0xf5f7fb, netColor: 0x4b5563,wavecolor:0x9696a2, birds1: 0x2563eb }
+    };
+    const getTheme = () => localStorage.getItem('theme') || 'dark';
+    function setTheme(t){
+      document.body.setAttribute('data-theme', t);
+      localStorage.setItem('theme', t);
+      document.querySelector('#themeToggle .icon').textContent = (t === 'dark') ? '🌙' : '☀️';
     }
+
+    /* ------------ VANTA per section ------------ */
+    let vantaEffect;
+    const sectionEffect = { home:"waves", education:"globe", experience:"net", projects:"birds", skills:"clouds" };
+    function initVanta(effectName){
+      if (vantaEffect && vantaEffect.destroy) vantaEffect.destroy();
+      const theme = THEMES[getTheme()];
+      const base = {
+        el:"#vanta-bg", mouseControls:true, touchControls:true, gyroControls:false,
+        minHeight:200, minWidth:200, scale:1, scaleMobile:1,
+        backgroundColor: theme.vantaBg
+      };
+      switch(effectName){
+        case "globe":  vantaEffect = VANTA.GLOBE(base); break;
+        case "birds":  vantaEffect = VANTA.BIRDS({...base, color1: theme.birds1}); break;
+        case "clouds": vantaEffect = VANTA.CLOUDS(base); break;
+        case "waves":  vantaEffect = VANTA.WAVES({...base, color: theme.wavecolor, shininess:30, waveHeight:18}); break;
+        default:       vantaEffect = VANTA.NET({...base, color: theme.netColor});
+      }
+    }
+
+    /* ------------ Typewriter ------------ */
+    function typeWriter(el, text, speed, done){
+      let i=0;(function tick(){ if(i<text.length){ el.textContent+=text.charAt(i++); setTimeout(tick, speed); } else if(done) done(); })();
+    }
+
+    /* ------------ Scroll spy / progress / sheen ------------ */
+    function setupScrollFeatures(){
+      const links=[...document.querySelectorAll(".nav-link")];
+      const sections=[...document.querySelectorAll("section.section")];
+
+      const io=new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            const id=entry.target.id;
+            links.forEach(a=>a.classList.toggle("active", a.getAttribute("href")==="#"+id));
+            initVanta(sectionEffect[id] || "net");
+          }
+        });
+      },{threshold:0.6});
+      sections.forEach(s=>io.observe(s));
+
+      // progress
+      const fill=document.getElementById("progressFill"), pctEl=document.getElementById("progressPct");
+      function updateProgress(){
+        const st=window.scrollY||document.documentElement.scrollTop;
+        const h=Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        const pct=Math.max(0, Math.min(1, st/h));
+        fill.style.height=(pct*100)+"%";
+        pctEl.textContent=Math.round(pct*100)+"%";
+        pctEl.style.bottom=(pct*100)+"%";
+      }
+      updateProgress();
+      window.addEventListener("scroll", updateProgress, {passive:true});
+      window.addEventListener("resize", updateProgress);
+
+      // education sheen once
+      (function(){
+        const edu=document.getElementById('education'), glass=document.getElementById('eduGlass');
+        if(!edu||!glass) return;
+        const io2=new IntersectionObserver((entries)=>{
+          entries.forEach(e=>{ if(e.isIntersecting){ glass.classList.add('sheen'); io2.disconnect(); } });
+        },{threshold:.45});
+        io2.observe(edu);
+      })();
+    }
+
+    /* ------------ Experience mouse panning ------------ */
+    (function setupExpMouseScroll(){
+      const track=document.getElementById('expTrack'); if(!track) return;
+      track.addEventListener('mousemove', (e)=>{
+        const rect=track.getBoundingClientRect();
+        const x=Math.max(0, Math.min(1,(e.clientX-rect.left)/rect.width));
+        const max=track.scrollWidth-track.clientWidth;
+        track.scrollLeft = x*max;
+      });
+      track.addEventListener('wheel', (e)=>{
+        if(Math.abs(e.deltaY)>Math.abs(e.deltaX)){ track.scrollLeft+=e.deltaY; e.preventDefault(); }
+      }, {passive:false});
+    })();
+
+    /* ------------ INIT ------------ */
+    document.addEventListener("DOMContentLoaded", ()=>{
+      setTheme(getTheme());               // apply saved theme
+      initVanta(sectionEffect.home);      // start background
+
+      const about=document.getElementById("aboutWrap");
+      const certs=document.getElementById("certs");
+      typeWriter(document.getElementById("line1"), "Hey, I am Nanda", 70, ()=>{
+        setTimeout(()=>{
+          typeWriter(document.getElementById("line2"), "Building the future with software, cloud and AI", 45, ()=>{
+            about.classList.remove("hidden"); about.classList.add("show");
+            certs.classList.remove("hidden"); certs.classList.add("show");
+            setupScrollFeatures();
+          });
+        },300);
+      });
+    });
+
+    // Theme toggle
+    document.getElementById('themeToggle').addEventListener('click', ()=>{
+      const next = (getTheme()==='dark') ? 'light' : 'dark';
+      setTheme(next);
+      const active = document.querySelector(".nav-link.active");
+      const id = (active?.dataset.section) || "home";
+      if(vantaEffect && vantaEffect.destroy) vantaEffect.destroy();
+      initVanta(sectionEffect[id]);
+    });
+
+    // Smooth scroll nav
+    document.addEventListener('click', (e)=>{
+      const a=e.target.closest('.side-nav .nav-link'); if(!a) return;
+      e.preventDefault();
+      document.querySelector(a.getAttribute('href')).scrollIntoView({behavior:'smooth', block:'start'});
+    });
+
+    // Re-init Vanta on resize for current section
+    window.addEventListener("resize", ()=>{
+      const active=document.querySelector(".nav-link.active");
+      const id=(active?.dataset.section)||"home";
+      if(vantaEffect && vantaEffect.destroy){ vantaEffect.destroy(); initVanta(sectionEffect[id]); }
+    });
   </script>
 </body>
 </html>
